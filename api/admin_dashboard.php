@@ -1,6 +1,6 @@
 <?php
 session_start();
-if (!isset($_SESSION['is_admin']) || !$_SESSION['is_admin']) {
+if (!isset($_COOKIE['is_admin']) || $_COOKIE['is_admin'] !== '1') {
     header('Location: /admin_login.html');
     exit;
 }
@@ -206,9 +206,9 @@ $db->close();
     </nav>
     <div class="sb-bottom">
         <div class="sb-admin">
-            <div class="sb-avatar"><?= strtoupper(substr($_SESSION['admin_name'], 0, 1)) ?></div>
+            <div class="sb-avatar"><?= strtoupper(substr($_COOKIE['admin_name'] ?? 'A', 0, 1)) ?></div>
             <div>
-                <div class="sb-admin-name"><?= htmlspecialchars($_SESSION['admin_name']) ?></div>
+                <div class="sb-admin-name"><?= htmlspecialchars($_COOKIE['admin_name'] ?? 'Admin') ?></div>
                 <div class="sb-admin-role">Administrator</div>
             </div>
         </div>

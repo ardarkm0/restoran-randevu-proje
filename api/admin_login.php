@@ -16,8 +16,8 @@ if (empty($username) || empty($password)) {
 }
 
 $db   = getDB();
-$stmt = $db->prepare("SELECT id, name, email, password FROM admins WHERE email = ?");
-$stmt->bind_param('s', $username);
+$stmt = $db->prepare("SELECT id, name, email, password FROM admins WHERE email = ? OR name = ?");
+$stmt->bind_param('ss', $username, $username);
 $stmt->execute();
 $result = $stmt->get_result();
 $admin  = $result->fetch_assoc();
@@ -25,9 +25,10 @@ $stmt->close();
 $db->close();
 
 if ($admin && ($password === $admin['password'] || password_verify($password, $admin['password']))) {
-    $_SESSION['admin_id']   = $admin['id'];
-    $_SESSION['admin_name'] = $admin['name'];
-    $_SESSION['is_admin']   = true;
+    $expire = time() + 60 * 60 * 24 * 7; // 7 gün
+    setcookie('admin_id',   $admin['id'],   $expire, '/', '', false, true);
+    setcookie('admin_name', $admin['name'], $expire, '/', '', false, false);
+    setcookie('is_admin',   '1',            $expire, '/', '', false, true);
     header('Location: /admin/dashboard');
     exit;
 } else {
