@@ -1,0 +1,18 @@
+{
+  "functions": {
+    "*.php": {
+      "runtime": "vercel-php@0.7.2"
+    }
+  },
+  "routes": [
+    { "src": "/home", "dest": "/home.php" },
+    { "src": "/login", "dest": "/index.html" },
+    { "src": "/register", "dest": "/index.html" },
+    { "src": "/booking", "dest": "/booking.php" },
+    { "src": "/logout", "dest": "/logout.php" },
+    { "src": "/admin", "dest": "/admin_login.html" },
+    { "src": "/admin/dashboard", "dest": "/admin_dashboard.php" },
+    { "src": "/forgot-password", "dest": "/forgot_password.html" },
+    { "src": "/reset-password", "dest": "/reset_password.html" }
+  ]
+}

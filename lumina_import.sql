@@ -1,6 +1,3 @@
--- Lumina Fine Dining – Database Schema v2
--- MySQL 5.5+ ve FreeSQLDatabase uyumlu
-
 CREATE TABLE IF NOT EXISTS users (
     id          INT AUTO_INCREMENT PRIMARY KEY,
     name        VARCHAR(100) NOT NULL,
