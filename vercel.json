@@ -8,6 +8,7 @@
     { "source": "/home", "destination": "/api/home.php" },
     { "source": "/booking", "destination": "/api/booking.php" },
     { "source": "/logout", "destination": "/api/logout.php" },
+    { "source": "/profile", "destination": "/api/profile.php" },
     { "source": "/admin/dashboard", "destination": "/api/admin_dashboard.php" },
     { "source": "/admin/login", "destination": "/api/admin_login.php" },
     { "source": "/admin/logout", "destination": "/api/admin_logout.php" },

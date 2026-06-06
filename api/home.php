@@ -46,7 +46,11 @@ $userName = $isLoggedIn ? $_COOKIE['user_name'] : '';
                             <div class="ud-name"><?= htmlspecialchars($userName) ?></div>
                             <div class="ud-email">Guest</div>
                             <hr>
-                            <a href="../api/logout.php" class="ud-logout">
+                            <a href="/profile" class="ud-logout" style="color:var(--text); margin-bottom:8px;">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                                My Profile
+                            </a>
+                            <a href="/api/logout.php" class="ud-logout">
                                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
                                 Sign Out
                             </a>
