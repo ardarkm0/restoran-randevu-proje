@@ -2,14 +2,14 @@
 require_once 'db.php';
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-    header('Location: forgot_password.html');
+    header('Location: /forgot_password.html');
     exit;
 }
 
 $email = trim(filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL));
 
 if (empty($email)) {
-    header('Location: forgot_password.html?error=empty');
+    header('Location: /forgot_password.html?error=empty');
     exit;
 }
 
@@ -37,7 +37,7 @@ $stmt->close();
 
 if (!$exists) {
     $db->close();
-    header('Location: forgot_password.html?sent=1'); // prevent enumeration
+    header('Location: /forgot_password.html?sent=1'); // prevent enumeration
     exit;
 }
 
@@ -63,5 +63,5 @@ $message = "Your Lumina password reset code is:\n\n  $code\n\nThis code expires 
 $headers = "From: noreply@lumina-dining.com\r\nContent-Type: text/plain; charset=UTF-8";
 mail($email, $subject, $message, $headers);
 
-header('Location: reset_password.html?email=' . urlencode($email) . '&sent=1');
+header('Location: /reset_password.html?email=' . urlencode($email) . '&sent=1');
 exit;

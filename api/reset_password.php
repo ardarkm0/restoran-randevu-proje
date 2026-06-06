@@ -2,7 +2,7 @@
 require_once 'db.php';
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-    header('Location: forgot_password.html');
+    header('Location: /forgot_password.html');
     exit;
 }
 
@@ -11,12 +11,12 @@ $code     = trim($_POST['code'] ?? '');
 $password = $_POST['password'] ?? '';
 
 if (empty($email) || empty($code) || empty($password)) {
-    header('Location: reset_password.html?error=empty&email=' . urlencode($email));
+    header('Location: /reset_password.html?error=empty&email=' . urlencode($email));
     exit;
 }
 
 if (strlen($password) < 6) {
-    header('Location: reset_password.html?error=short&email=' . urlencode($email));
+    header('Location: /reset_password.html?error=short&email=' . urlencode($email));
     exit;
 }
 
@@ -30,7 +30,7 @@ $db->query("
         token VARCHAR(6) NOT NULL,
         expires_at DATETIME NOT NULL,
         used TINYINT(1) NOT NULL DEFAULT 0,
-        created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
+        created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
     ) ENGINE=InnoDB
 ");
 
@@ -43,7 +43,7 @@ $stmt->store_result();
 
 if ($stmt->num_rows === 0) {
     $stmt->close(); $db->close();
-    header('Location: reset_password.html?error=invalid&email=' . urlencode($email));
+    header('Location: /reset_password.html?error=invalid&email=' . urlencode($email));
     exit;
 }
 $stmt->close();
@@ -63,5 +63,5 @@ $pw->execute();
 $pw->close();
 $db->close();
 
-header('Location: index.html?reset=success');
+header('Location: /?reset=success');
 exit;
