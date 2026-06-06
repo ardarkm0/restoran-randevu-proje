@@ -3,7 +3,7 @@ session_start();
 require_once 'db.php';
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST' || !isset($_POST['admin_login'])) {
-    header('Location: /admin');
+    header('Location: /admin_login.html');
     exit;
 }
 
@@ -11,7 +11,7 @@ $username = trim($_POST['username'] ?? '');
 $password = $_POST['password'] ?? '';
 
 if (empty($username) || empty($password)) {
-    header('Location: /admin?error=empty');
+    header('Location: /admin_login.html?error=empty');
     exit;
 }
 
@@ -28,9 +28,9 @@ if ($admin && ($password === $admin['password'] || password_verify($password, $a
     $_SESSION['admin_id']   = $admin['id'];
     $_SESSION['admin_name'] = $admin['name'];
     $_SESSION['is_admin']   = true;
-    header('Location: /api/admin_dashboard.php');
+    header('Location: /admin/dashboard');
     exit;
 } else {
-    header('Location: /admin?error=invalid');
+    header('Location: /admin_login.html?error=invalid');
     exit;
 }
