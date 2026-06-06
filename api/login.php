@@ -25,8 +25,9 @@ $stmt->close();
 $db->close();
 
 if ($user && password_verify($password, $user['password'])) {
-    $_SESSION['user_id']   = $user['id'];
-    $_SESSION['user_name'] = $user['name'];
+    $expire = time() + 60 * 60 * 24 * 30; // 30 gün
+    setcookie('user_id',   $user['id'],   $expire, '/', '', false, true);
+    setcookie('user_name', $user['name'], $expire, '/', '', false, false);
     header('Location: /home');
     exit;
 } else {

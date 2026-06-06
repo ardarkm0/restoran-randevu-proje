@@ -1,7 +1,7 @@
 <?php
 session_start();
-$isLoggedIn = isset($_SESSION['user_id']);
-$userName = $isLoggedIn ? $_SESSION['user_name'] : '';
+$isLoggedIn = isset($_COOKIE['user_id']);
+$userName = $isLoggedIn ? $_COOKIE['user_name'] : '';
 ?>
 <!DOCTYPE html>
 <html lang="en">

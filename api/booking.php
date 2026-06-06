@@ -3,7 +3,7 @@ session_start();
 require_once 'db.php';
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-    header('Location: home.php');
+    header('Location: /home');
     exit;
 }
 
@@ -13,10 +13,10 @@ $guests     = intval($_POST['guests']     ?? 2);
 $seating    = trim(htmlspecialchars($_POST['seating']    ?? ''));
 $menu_items = trim(htmlspecialchars($_POST['menu_items'] ?? ''));
 $requests   = trim(htmlspecialchars($_POST['requests']   ?? ''));
-$user_id    = $_SESSION['user_id'] ?? null;
+$user_id    = $_COOKIE['user_id'] ?? null;
 
 if (empty($date) || empty($time) || empty($seating)) {
-    header('Location: home.php?booking=error');
+    header('Location: /home?booking=error');
     exit;
 }
 
@@ -31,11 +31,11 @@ $stmt->bind_param('issssss', $user_id, $date, $time, $guests, $seating, $menu_it
 if ($stmt->execute()) {
     $stmt->close();
     $db->close();
-    header('Location: home.php?booking=success');
+    header('Location: /home?booking=success');
     exit;
 } else {
     $stmt->close();
     $db->close();
-    header('Location: home.php?booking=error');
+    header('Location: /home?booking=error');
     exit;
 }

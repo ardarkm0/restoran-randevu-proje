@@ -41,8 +41,9 @@ $stmt = $db->prepare("INSERT INTO users (name, email, password) VALUES (?, ?, ?)
 $stmt->bind_param('sss', $name, $email, $hashed);
 
 if ($stmt->execute()) {
-    $_SESSION['user_id']   = $stmt->insert_id;
-    $_SESSION['user_name'] = $name;
+    $expire = time() + 60 * 60 * 24 * 30; // 30 gün
+    setcookie('user_id',   $stmt->insert_id, $expire, '/', '', false, true);
+    setcookie('user_name', $name,            $expire, '/', '', false, false);
     $stmt->close();
     $db->close();
     header('Location: /home');
