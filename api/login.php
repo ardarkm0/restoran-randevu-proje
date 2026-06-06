@@ -3,7 +3,7 @@ session_start();
 require_once 'db.php';
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST' || !isset($_POST['login'])) {
-    header('Location: index.html');
+    header('Location: /');
     exit;
 }
 
@@ -11,7 +11,7 @@ $email    = trim(filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL));
 $password = $_POST['password'] ?? '';
 
 if (empty($email) || empty($password)) {
-    header('Location: index.html?error=empty');
+    header('Location: /?error=empty');
     exit;
 }
 
@@ -27,9 +27,9 @@ $db->close();
 if ($user && password_verify($password, $user['password'])) {
     $_SESSION['user_id']   = $user['id'];
     $_SESSION['user_name'] = $user['name'];
-    header('Location: home.php');
+    header('Location: /home');
     exit;
 } else {
-    header('Location: index.html?error=invalid');
+    header('Location: /?error=invalid');
     exit;
 }

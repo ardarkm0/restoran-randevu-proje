@@ -3,7 +3,7 @@ session_start();
 require_once 'db.php';
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST' || !isset($_POST['register'])) {
-    header('Location: index.html');
+    header('Location: /');
     exit;
 }
 
@@ -12,12 +12,12 @@ $email    = trim(filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL));
 $password = $_POST['password'] ?? '';
 
 if (empty($name) || empty($email) || empty($password)) {
-    header('Location: index.html?error=empty');
+    header('Location: /?error=empty');
     exit;
 }
 
 if (strlen($password) < 6) {
-    header('Location: index.html?error=short_password');
+    header('Location: /?error=short_password');
     exit;
 }
 
@@ -32,7 +32,7 @@ $check->store_result();
 if ($check->num_rows > 0) {
     $check->close();
     $db->close();
-    header('Location: index.html?error=exists');
+    header('Location: /?error=exists');
     exit;
 }
 $check->close();
@@ -45,11 +45,11 @@ if ($stmt->execute()) {
     $_SESSION['user_name'] = $name;
     $stmt->close();
     $db->close();
-    header('Location: home.php');
+    header('Location: /home');
     exit;
 } else {
     $stmt->close();
     $db->close();
-    header('Location: index.html?error=db');
+    header('Location: /?error=db');
     exit;
 }
