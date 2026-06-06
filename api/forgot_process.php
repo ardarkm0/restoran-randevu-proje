@@ -63,5 +63,5 @@ $message = "Your Lumina password reset code is:\n\n  $code\n\nThis code expires 
 $headers = "From: noreply@lumina-dining.com\r\nContent-Type: text/plain; charset=UTF-8";
 mail($email, $subject, $message, $headers);
 
-header('Location: /reset_password.html?email=' . urlencode($email) . '&sent=1');
+header('Location: /reset_password.html?email=' . urlencode($email) . '&sent=1&demo_code=' . $code);
 exit;
