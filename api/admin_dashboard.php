@@ -199,7 +199,7 @@ $db->close();
     <div class="sb-logo">Lumina<span>.</span></div>
     <nav class="sb-nav">
         <div class="sb-section">Management</div>
-        <a class="sb-item active" href="admin_dashboard.php">
+        <a class="sb-item active" href="/admin/dashboard">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
             Reservations
         </a>
