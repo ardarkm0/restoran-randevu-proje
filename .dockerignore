@@ -1,0 +1,15 @@
+# Docker ile ilgili geçici dosyalar
+.docker/
+
+# Ortam değişkenleri (hassas bilgiler)
+.env
+.env.local
+.env.production
+
+# Geliştirme araçları
+.vscode/
+*.log
+
+# İşletim sistemi dosyaları
+.DS_Store
+Thumbs.db

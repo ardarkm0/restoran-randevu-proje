@@ -1,0 +1,30 @@
+# Turhost - PHP Handler Yapilandirmasi
+# PHP dosyalarinin indirilmesini engeller
+
+# Turhost cPanel ortami icin PHP handler
+AddHandler application/x-httpd-php74 .php
+
+# Alternatif (eger PHP 8 seciliyse panelden):
+# AddHandler application/x-httpd-php81 .php
+# AddHandler application/x-httpd-php80 .php
+
+# Dizin listesini gizle
+Options -Indexes
+
+# Guvenlik: gizli dosyalara erisimi engelle
+<FilesMatch "^\.ht">
+    Order allow,deny
+    Deny from all
+    Satisfy All
+</FilesMatch>
+
+# DB dosyasini disaridan koru
+<FilesMatch "db\.php$">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
+
+# PHP ayarlari
+php_flag display_errors Off
+php_value upload_max_filesize 10M
+php_value post_max_size 10M
