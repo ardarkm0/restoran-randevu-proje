@@ -115,6 +115,18 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
             t.classList.add('show'); 
             setTimeout(() => t.classList.remove('show'), 4500);
             history.replaceState(null, '', window.location.pathname);
+        } else if (params.get('booking') === 'taken') {
+            t.className = 'toast show toast-error';
+            t.querySelector('strong').textContent = 'Timeslot Unavailable';
+            t.querySelector('span').textContent = 'This date, time and seating is already booked.';
+            setTimeout(() => t.classList.remove('show'), 4500);
+            history.replaceState(null, '', window.location.pathname);
+        } else if (params.get('booking') === 'error') {
+            t.className = 'toast show toast-error';
+            t.querySelector('strong').textContent = 'Booking Failed';
+            t.querySelector('span').textContent = 'Please check your information and try again.';
+            setTimeout(() => t.classList.remove('show'), 4500);
+            history.replaceState(null, '', window.location.pathname);
         }
     }
 })();

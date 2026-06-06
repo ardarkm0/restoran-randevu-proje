@@ -23,6 +23,20 @@ if (empty($date) || empty($time) || empty($seating)) {
 $guests = max(1, min(20, $guests));
 
 $db   = getDB();
+
+// Çifte rezervasyon kontrolü
+$check = $db->prepare("SELECT id FROM reservations WHERE date = ? AND time = ? AND seating = ? AND status != 'cancelled'");
+$check->bind_param('sss', $date, $time, $seating);
+$check->execute();
+$check->store_result();
+
+if ($check->num_rows > 0) {
+    $check->close();
+    $db->close();
+    header('Location: /home?booking=taken');
+    exit;
+}
+$check->close();
 $stmt = $db->prepare(
     "INSERT INTO reservations (user_id, date, time, guests, seating, menu_items, requests) VALUES (?, ?, ?, ?, ?, ?, ?)"
 );
