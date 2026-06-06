@@ -23,7 +23,7 @@ $db->query("
         token       VARCHAR(6)   NOT NULL,
         expires_at  DATETIME     NOT NULL,
         used        TINYINT(1)   NOT NULL DEFAULT 0,
-        created_at  DATETIME     NOT NULL DEFAULT CURRENT_TIMESTAMP
+        created_at  TIMESTAMP    NOT NULL DEFAULT CURRENT_TIMESTAMP
     ) ENGINE=InnoDB
 ");
 
