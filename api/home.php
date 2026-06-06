@@ -14,7 +14,7 @@ $userName = $isLoggedIn ? $_SESSION['user_name'] : '';
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="home.css">
+    <link rel="stylesheet" href="../home.css">
 </head>
 <body>
 
@@ -46,7 +46,7 @@ $userName = $isLoggedIn ? $_SESSION['user_name'] : '';
                             <div class="ud-name"><?= htmlspecialchars($userName) ?></div>
                             <div class="ud-email">Guest</div>
                             <hr>
-                            <a href="logout.php" class="ud-logout">
+                            <a href="../api/logout.php" class="ud-logout">
                                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
                                 Sign Out
                             </a>
@@ -136,15 +136,15 @@ $userName = $isLoggedIn ? $_SESSION['user_name'] : '';
         </div>
         <div class="grid">
             <div class="image-box">
-                <img src="1.png" alt="Lumina Fine Dining Interior">
+                <img src="../1.png" alt="Lumina Fine Dining Interior">
                 <div class="image-overlay"><span>Main Dining Hall</span></div>
             </div>
             <div class="image-box">
-                <img src="2.png" alt="Lumina Terrace View">
+                <img src="../2.png" alt="Lumina Terrace View">
                 <div class="image-overlay"><span>Garden Terrace</span></div>
             </div>
             <div class="image-box">
-                <img src="3.png" alt="Lumina Signature Cuisine">
+                <img src="../3.png" alt="Lumina Signature Cuisine">
                 <div class="image-overlay"><span>Signature Dishes</span></div>
             </div>
         </div>
@@ -174,7 +174,7 @@ $userName = $isLoggedIn ? $_SESSION['user_name'] : '';
                     <p>Select your preferred date, time, and seating to begin your journey</p>
                 </div>
 
-                <form id="bookingForm" action="booking.php" method="POST">
+                <form id="bookingForm" action="../api/booking.php" method="POST">
 
                     
                     <div class="booking-row">
@@ -581,7 +581,7 @@ $userName = $isLoggedIn ? $_SESSION['user_name'] : '';
             <div class="footer-newsletter">
                 <h3>Newsletter</h3>
                 <p>Subscribe for exclusive invites and seasonal menu updates.</p>
-                <form action="newsletter.php" method="POST" class="nl-form">
+                <form action="../api/newsletter.php" method="POST" class="nl-form">
                     <input type="email" name="nl_email" placeholder="Email address" required>
                     <button type="submit">→</button>
                 </form>
@@ -603,6 +603,6 @@ $userName = $isLoggedIn ? $_SESSION['user_name'] : '';
         </div>
     </div>
 
-    <script src="home.js"></script>
+    <script src="../home.js"></script>
 </body>
 </html>
