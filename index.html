@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="google-site-verification" content="eFgnt8h2jevnbNQc-VaQfAl3gnzpvkv0uBsoJBHphVo" />
     <title>Lumina | Login & Register</title>
-    <meta name="description" content="Sign in or create an account at Lumina Fine Dining to reserve your table and enjoy exclusive experiences.">
+    <meta name="description" content="Login or create an account at Lumina Fine Dining to reserve your table and enjoy exclusive experiences.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -56,7 +56,7 @@
             <div class="form-container">
                 
                 <div class="tab-switcher">
-                    <button class="tab-btn active" id="tab-login" onclick="showForm('login-form', this)">Sign In</button>
+                    <button class="tab-btn active" id="tab-login" onclick="showForm('login-form', this)">Login</button>
                     <button class="tab-btn" id="tab-register" onclick="showForm('register-form', this)">Create Account</button>
                     <div class="tab-indicator" id="tab-indicator"></div>
                 </div>
@@ -65,7 +65,7 @@
                 <div class="form-box active" id="login-form">
                     <div class="form-header">
                         <h1>Welcome Back</h1>
-                        <p>Sign in to manage your reservations</p>
+                        <p>Login to manage your reservations</p>
                     </div>
                     <form action="/api/login.php" method="POST">
                         <div class="input-group">
@@ -94,7 +94,7 @@
                             <a href="forgot_password.html" class="forgot-link">Forgot password?</a>
                         </div>
                         <button type="submit" class="submit-btn" name="login">
-                            <span>Sign In</span>
+                            <span>Login</span>
                             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
                         </button>
                     </form>
@@ -144,7 +144,7 @@
                             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
                         </button>
                     </form>
-                    <p class="switch-text">Already a member? <a href="#" onclick="showForm('login-form', document.getElementById('tab-login'))">Sign in</a></p>
+                    <p class="switch-text">Already a member? <a href="#" onclick="showForm('login-form', document.getElementById('tab-login'))">Login</a></p>
                 </div>
             </div>
         </div>
